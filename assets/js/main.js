@@ -1,44 +1,48 @@
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, navId) =>{
+/*===== MENU SHOW =====*/
+const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+        nav = document.getElementById(navId);
 
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
-        })
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
     }
-}
-showMenu('nav-toggle','nav-menu')
+};
+showMenu('nav-toggle', 'nav-menu');
 
 /*===== REMOVE MENU MOBILE =====*/
-const navLink = document.querySelectorAll('.nav__link')
+const navLink = document.querySelectorAll('.nav__link');
 
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    navMenu.classList.remove('show')
+function linkAction() {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.remove('show');
 }
-navLink.forEach(n => n.addEventListener('click', linkAction))
+navLink.forEach((n) => n.addEventListener('click', linkAction));
 
 /*===== SCROLL SECTIONS ACTIVE LINK =====*/
-const sections = document.querySelectorAll('section[id]')
+const sections = document.querySelectorAll('section[id]');
 
-window.addEventListener('scroll', scrollActive)
+window.addEventListener('scroll', scrollActive);
 
-function scrollActive(){
-    const scrollY = window.pageYOffset
+function scrollActive() {
+    const scrollY = window.pageYOffset;
 
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight
+    sections.forEach((current) => {
+        const sectionHeight = current.offsetHeight;
         const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+        sectionId = current.getAttribute('id');
 
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active')
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document
+                .querySelector('.nav__menu a[href*=' + sectionId + ']')
+                .classList.add('active');
+        } else {
+            document
+                .querySelector('.nav__menu a[href*=' + sectionId + ']')
+                .classList.remove('active');
         }
-    })
+    });
 }
 
 /*===== SCROLL REVEAL ANIMATION =====*/
@@ -46,35 +50,63 @@ const sr = ScrollReveal({
     origin: 'top',
     distance: '80px',
     duration: 2000,
-    reset: true
-})
+    reset: true,
+});
 
 /*SCROLL HOME*/
-sr.reveal('.home__title', {})
-sr.reveal('.home__scroll', {delay: 200})
-sr.reveal('.home__img', {origin:'right', delay: 400})
+sr.reveal('.home__title', {});
+sr.reveal('.home__scroll', { delay: 200 });
+sr.reveal('.home__img', { origin: 'right', delay: 400 });
 
 /*SCROLL ABOUT*/
-sr.reveal('.about__img', {delay: 500})
-sr.reveal('.about__subtitle', {delay: 300})
-sr.reveal('.about__profession', {delay: 400})
-sr.reveal('.about__text', {delay: 500})
-sr.reveal('.about__social-icon', {delay: 600, interval: 200})
+sr.reveal('.about__img', { delay: 500 });
+sr.reveal('.about__subtitle', { delay: 300 });
+sr.reveal('.about__profession', { delay: 400 });
+sr.reveal('.about__text', { delay: 500 });
+sr.reveal('.about__social-icon', { delay: 600, interval: 200 });
 
 /*SCROLL SKILLS*/
-sr.reveal('.skills__subtitle', {})
-sr.reveal('.skills__name', {distance: '20px', delay: 50, interval: 100})
-sr.reveal('.skills__img', {delay: 400})
+sr.reveal('.skills__subtitle', {});
+sr.reveal('.skills__name', { distance: '20px', delay: 50, interval: 100 });
+sr.reveal('.skills__img', { delay: 400 });
 
 /*SCROLL PORTFOLIO*/
-sr.reveal('.portfolio__img', {interval: 200})
+sr.reveal('.portfolio__img', { interval: 200 });
 
 /*SCROLL CONTACT*/
-sr.reveal('.contact__subtitle', {})
-sr.reveal('.contact__text', {interval: 200})
-sr.reveal('.contact__input', {delay: 400})
-sr.reveal('.contact__button', {delay: 600})
+sr.reveal('.contact__subtitle', {});
+sr.reveal('.contact__text', { interval: 200 });
+sr.reveal('.contact__input', { delay: 400 });
+sr.reveal('.contact__button', { delay: 600 });
 
+const contactForm = document.querySelector('#contact-form');
+contactForm.addEventListener('submit', submitForm);
 
+function submitForm(e) {
+    e.preventDefault();
 
+    const name = document.querySelector('#name-input').value;
+    const email = document.querySelector('#email-input').value;
+    const message = document.querySelector('#message-input').value;
 
+    sendEmail(name, email, message);
+}
+
+function sendEmail(name, email, message) {
+    Email.send({
+        Host: 'smtp.gmail.com',
+        Username: 'jameskulu55@gmail.com',
+        Password: 'rsxzqhxhbmneshfs',
+        To: 'jameskulu55@gmail.com',
+        From: 'jameskulu55@gmail.com',
+        Subject: `${name} sent you a message on your website`,
+        Body: `Name: ${name}<br />Email: ${email}<br /><br />${message}`,
+    })
+        .then((message) => {
+            contactForm.reset();
+            alert('Thank you for the message.');
+        })
+        .catch((err) => {
+            alert('Something went wrong.');
+        });
+}
