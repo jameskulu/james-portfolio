@@ -94,9 +94,10 @@ function submitForm(e) {
 
 function sendEmail(name, email, message) {
     Email.send({
-        Host: 'smtp.gmail.com',
-        Username: 'jameskulu55@gmail.com',
-        Password: 'rsxzqhxhbmneshfs',
+        Host: 'smtp.elasticemail.com',
+        Username: 'james@info.com',
+        Password: '38B9A30899595AD0924B72BD38940E977499',
+        Port: 2525,
         To: 'jameskulu55@gmail.com',
         From: 'jameskulu55@gmail.com',
         Subject: `${name} sent you a message on your website`,
@@ -104,6 +105,7 @@ function sendEmail(name, email, message) {
     })
         .then((message) => {
             contactForm.reset();
+            console.log(message)
             alert('Thank you for the message.');
         })
         .catch((err) => {
