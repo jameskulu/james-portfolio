@@ -1,388 +1,2542 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="assets/img/icon.ico" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Kulu | Senior Python Engineer</title>
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
 
-        <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="assets/css/styles.css" />
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #06b6d4;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --dark-secondary: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --success: #10b981;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
 
-        <!-- ===== BOX ICONS ===== -->
-        <!-- <link
-            href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
-            rel="stylesheet"
-        /> -->
-        <link
-            href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-            rel="stylesheet"
-        />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <title>James Kulu | Software Engineer</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">James Kulu</a>
-                </div>
+        html {
+            scroll-behavior: smooth;
+        }
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link active">Home</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">About</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#skills" class="nav__link">Skills</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#projects" class="nav__link">Projects</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#contact" class="nav__link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="bx bx-menu"></i>
-                </div>
-            </nav>
-        </header>
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: var(--gradient-dark);
+            overflow: hidden;
+        }
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home" id="home">
-                <div class="home__container bd-grid">
-                    <h1 class="home__title"><span>HE</span><br />LLO.</h1>
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: backgroundScroll 20s linear infinite;
+        }
 
-                    <div class="home__scroll">
-                        <a href="#about" class="home__scroll-link"
-                            ><i class="bx bx-up-arrow-alt"></i>Scroll down</a
-                        >
-                    </div>
-                    <img src="assets/img/james2.png" alt="" class="home__img" />
-                </div>
-            </section>
+        @keyframes backgroundScroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
 
-            <!--===== ABOUT =====-->
-            <section class="about section" id="about">
-                <h2 class="section-title">About</h2>
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/james2.png" alt="" />
-                    </div>
+        .shape {
+            position: absolute;
+            background: var(--gradient);
+            opacity: 0.03;
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
 
-                    <div>
-                        <h2 class="about__subtitle">I am James Kulu</h2>
-                        <span class="about__profession">Software Engineer</span>
-                        <p class="about__text">
-                            An ambitious software engineer, with excellent work
-                            ethics, time management and creativity. Seeking to
-                            utilize my skills and dedication in the web
-                            developing field, and pursue my passion to provide
-                            useful and satisfactory websites to clients.
-                        </p>
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            left: -150px;
+            top: -150px;
+            animation-delay: 0s;
+        }
 
-                        <div class="about__social">
-                            <a
-                                href="https://www.linkedin.com/in/jameskulu/"
-                                target="_blank"
-                                class="about__social-icon"
-                                ><i class="bx bxl-linkedin"></i
-                            ></a>
-                            <a
-                                href="https://www.github.com/jameskulu/"
-                                target="_blank"
-                                class="about__social-icon"
-                                ><i class="bx bxl-github"></i
-                            ></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            right: -100px;
+            top: 50%;
+            animation-delay: 5s;
+        }
 
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
+        .shape:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            left: 50%;
+            bottom: -200px;
+            animation-delay: 10s;
+        }
 
-                <div class="skills__container bd-grid">
-                    <div class="skills__box">
-                        <h3 class="skills__subtitle">Programming Language</h3>
-                        <span class="skills__name"
-                            ><i class="bx bxl-python"></i>Python</span
-                        >
-                        <span class="skills__name"
-                            ><i class="bx bxl-javascript"></i>JavaScript</span
-                        >
-                        <span class="skills__name"
-                            ><i class="bx bxl-java"></i>Java</span
-                        >
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
 
-                        <h3 class="skills__subtitle">Markup Language</h3>
-                        <span class="skills__name"
-                            ><i class="bx bxl-html5"></i>HTML</span
-                        >
-                        <span class="skills__name"
-                            ><i class="bx bxl-css3"></i>CSS</span
-                        >
-                        <span class="skills__name"
-                            ><i class="bx bxl-sass"></i>Sass</span
-                        >
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-                        <h3 class="skills__subtitle">Framework</h3>
-                        <span class="skills__name"
-                            ><i class="bx bxl-django"></i>Django</span
-                        >
-                        <span class="skills__name"
-                            ><i class="bx bxl-flask"></i>Flask</span
-                        >
-                        <span class="skills__name"
-                            ><i class="bx bxl-react"></i>React</span
-                        >
-                        <span class="skills__name"
-                            ><i class="bx bxl-nodejs"></i>Expressjs</span
-                        >
+        nav.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(15, 23, 42, 0.98);
+        }
 
-                        <h3 class="skills__subtitle">Database</h3>
-                        <span class="skills__name">MySQL</span>
-                        <span class="skills__name">Postgres</span>
-                        <span class="skills__name">MongoDB</span>
-                    </div>
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-                    <div class="skills__img">
-                        <img src="assets/img/skill.jpg" alt="" />
-                    </div>
-                </div>
-            </section>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
 
-            <!--===== PROJECTS =====-->
-            <section class="portfolio section" id="projects">
-                <h2 class="section-title">Projects</h2>
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-                <div class="portfolio__container bd-grid">
-                    <div class="portfolio__img">
-                        <img src="assets/img/bookland.jpg" alt="" />
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
-                        <div class="portfolio__link">
-                            <a
-                                href="https://bookland-ecommerce.herokuapp.com/"
-                                target="_blank"
-                                class="portfolio__link-name"
-                                >View website</a
-                            >
-                            <hr />
-                            <a
-                                href="https://github.com/jameskulu/bookland-ecommerce-django"
-                                target="_blank"
-                                class="portfolio__link-name"
-                                >View code</a
-                            >
-                        </div>
-                    </div>
-                    <div class="portfolio__img">
-                        <img src="assets/img/vintage.jpg" alt="" />
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
 
-                        <div class="portfolio__link">
-                            <a
-                                href="https://vintagewardrobe.herokuapp.com/"
-                                target="_blank"
-                                class="portfolio__link-name"
-                                >View website</a
-                            >
-                            <hr />
-                            <a
-                                href="https://github.com/jameskulu/vintage-wardrobe-system-be"
-                                target="_blank"
-                                class="portfolio__link-name"
-                                >View code</a
-                            >
-                        </div>
-                    </div>
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-                    <div class="portfolio__img">
-                        <img src="assets/img/skin.jpg" alt="" />
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
 
-                        <div class="portfolio__link">
-                            <a
-                                href="https://github.com/jameskulu/skincare-retail"
-                                class="portfolio__link-name"
-                                target="_blank"
-                                >View code</a
-                            >
-                        </div>
-                    </div>
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--light);
+            cursor: pointer;
+        }
 
-                    <div class="portfolio__img">
-                        <img src="assets/img/jistagram.jpg" alt="" />
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 2rem;
+        }
 
-                        <div class="portfolio__link">
-                            <a
-                                href="https://github.com/jameskulu/instagram-clone-django"
-                                target="_blank"
-                                class="portfolio__link-name"
-                                >View code</a
-                            >
-                        </div>
-                    </div>
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
 
-                    <div class="portfolio__img">
-                        <img src="assets/img/movie.jpg" alt="" />
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
 
-                        <div class="portfolio__link">
-                            <a
-                                href="https://github.com/jameskulu/movie-review-mern"
-                                class="portfolio__link-name"
-                                target="_blank"
-                                >View code</a
-                            >
-                        </div>
-                    </div>
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
 
-                    <div class="portfolio__img">
-                        <img src="assets/img/work6.jpg" alt="" />
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            color: var(--light);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
 
-                        <div class="portfolio__link">
-                            <a
-                                href="https://github.com/jameskulu?tab=repositories"
-                                class="portfolio__link-name"
-                                target="_blank"
-                                >View more projects..</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </section>
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
 
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
 
-                <div class="contact__container bd-grid">
-                    <div class="contact__info">
-                        <h3 class="contact__subtitle">EMAIL</h3>
-                        <span class="contact__text">
-                            <a href="mailto: jameskulu55@gmail.com"
-                                >jameskulu55@gmail.com</a
-                            ></span
-                        >
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
 
-                        <h3 class="contact__subtitle">PHONE</h3>
-                        <span class="contact__text">
-                            <a href="tel:+9779860305013">+977 9860305013</a>
-                        </span>
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
 
-                        <h3 class="contact__subtitle">Address</h3>
-                        <span class="contact__text">Lalitpur, Nepal</span>
-                    </div>
+        .btn-primary:hover::before {
+            transform: translateX(0);
+        }
 
-                    <form
-                        id="contact-form"
-                        action=""
-                        class="contact__form"
-                        name="contact"
-                    >
-                        <div class="contact__inputs">
-                            <input
-                                name="name"
-                                type="text"
-                                placeholder="Name"
-                                class="contact__input"
-                                id="name-input"
-                                required
-                            />
-                            <input
-                                name="email"
-                                type="email"
-                                placeholder="Email"
-                                class="contact__input"
-                                id="email-input"
-                                required
-                            />
-                        </div>
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
 
-                        <textarea
-                            name="message"
-                            id="message-input"
-                            cols="0"
-                            rows="10"
-                            class="contact__input"
-                            placeholder="Message"
-                            required
-                        ></textarea>
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
 
-                        <input
-                            type="submit"
-                            value="Send"
-                            class="contact__button"
-                        />
-                    </form>
-                </div>
-            </section>
-        </main>
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
 
-        <!--===== FOOTER =====-->
-        <footer class="footer section">
-            <div class="footer__container bd-grid">
-                <div class="footer__data">
-                    <h2 class="footer__title">James Kulu</h2>
-                    <p class="footer__text">
-                        I'm James Kulu and this is my personal website
-                    </p>
-                </div>
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 1s ease 0.8s backwards;
+        }
 
-                <div class="footer__data">
-                    <h2 class="footer__title">EXPLORE</h2>
-                    <ul>
-                        <li><a href="#home" class="footer__link">Home</a></li>
-                        <li><a href="#about" class="footer__link">About</a></li>
-                        <li>
-                            <a href="#skills" class="footer__link">Skills</a>
-                        </li>
-                        <li>
-                            <a href="#projects" class="footer__link"
-                                >Projects</a
-                            >
-                        </li>
-                        <li>
-                            <a href="#Contact" class="footer__link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-                <div class="footer__data">
-                    <h2 class="footer__title">FOLLOW</h2>
-                    <a
-                        href="https://www.facebook.com/james.kulu.33/"
-                        target="_blank"
-                        class="footer__social"
-                        ><i class="bx bxl-facebook"></i
-                    ></a>
-                    <a
-                        href="https://www.instagram.com/james_kulu"
-                        target="_blank"
-                        class="footer__social"
-                        ><i class="bx bxl-instagram"></i
-                    ></a>
-                    <a href="javascript:void(0)" class="footer__social"
-                        ><i class="bx bxl-twitter"></i
-                    ></a>
+        .hero-image-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.5;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .hero-image img {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 50%;
+            border: 5px solid rgba(99, 102, 241, 0.3);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-light);
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+
+        .timeline-content {
+            width: calc(50% - 2rem);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+            border-color: var(--primary);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px var(--dark), 0 0 0 6px var(--primary);
+        }
+
+        .timeline-date {
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .timeline-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-description li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Education Section */
+        .education-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .education-item {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+        }
+
+        .education-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .education-content {
+            flex: 1;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-header h3 {
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            color: var(--primary-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-affiliation {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .education-date {
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-light);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .education-achievement {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent);
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .thesis-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .thesis-info h4 {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .thesis-info p {
+            color: var(--gray);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .coursework h4 {
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .course-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .course-tag {
+            padding: 0.4rem 0.8rem;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--secondary);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .course-tag:hover {
+            background: rgba(6, 182, 212, 0.3);
+            transform: scale(1.05);
+        }
+
+        .certifications-section {
+            margin-top: 3rem;
+        }
+
+        .certifications-title {
+            font-size: 2rem;
+            color: var(--light);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .certification-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--success);
+        }
+
+        .cert-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--success);
+            font-size: 1.3rem;
+        }
+
+        .cert-content h4 {
+            color: var(--light);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-content p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-light);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--gradient);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .skill-tag i {
+            margin-right: 0.3rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(6, 182, 212, 0.2);
+            color: var(--secondary);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+        }
+
+        /* YouTube Channel Section */
+        .youtube-container {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .youtube-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .youtube-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .channel-header {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .channel-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(255, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        .channel-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .channel-details h3 {
+            font-size: 2rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .channel-handle {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .channel-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .stat-label {
+            display: block;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .subscribe-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #FF0000;
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .channel-description {
+            margin-bottom: 3rem;
+        }
+
+        .channel-description p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .video-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 1rem;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--white);
+            background: rgba(0, 0, 0, 0.7);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .video-info h4 {
+            color: var(--light);
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .video-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .youtube-cta {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+
+        .youtube-cta p {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .youtube-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #FF0000;
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-youtube:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, #833AB4, #FD1D1D, #FCB045);
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-instagram:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(131, 58, 180, 0.3);
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .award-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+        }
+
+        .award-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .award-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .award-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .award-date {
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary-light);
+        }
+
+        .contact-details h4 {
+            color: var(--light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary-light);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-control {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-control::placeholder {
+            color: var(--gray);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gradient);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        /* Responsive Design */
+        /* Large Tablets and Small Desktops */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: clamp(2rem, 6vw, 4rem);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .footer-content {
+                gap: 2rem;
+            }
+        }
+
+        /* Tablets */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+                min-height: auto;
+                margin-top: 3rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-image-wrapper {
+                max-width: 300px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .about-image-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                padding: 1.5rem;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .education-item {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .education-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .youtube-container {
+                padding: 2rem;
+            }
+
+            .channel-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .channel-stats {
+                justify-content: center;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .youtube-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Mobile Phones - Large */
+        @media (max-width: 425px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero-text h1 {
+                font-size: clamp(1.8rem, 8vw, 3rem);
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-text .tagline {
+                font-size: 1rem;
+            }
+
+            .hero-image-wrapper {
+                max-width: 250px;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .about-image-wrapper {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .stat-box {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .timeline-content {
+                padding: 1rem;
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .timeline-title {
+                font-size: 1.1rem;
+            }
+
+            .skill-category {
+                padding: 1.5rem;
+            }
+
+            .skill-tags {
+                gap: 0.5rem;
+            }
+
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .project-card {
+                border-radius: 15px;
+            }
+
+            .project-content {
+                padding: 1rem;
+            }
+
+            .project-title {
+                font-size: 1.1rem;
+            }
+
+            .youtube-container {
+                padding: 1.5rem;
+            }
+
+            .channel-avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            .channel-details h3 {
+                font-size: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 1.2rem;
+            }
+
+            .youtube-links {
+                gap: 0.5rem;
+            }
+
+            .btn-youtube, .btn-instagram {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .award-card {
+                padding: 1.5rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .form-control {
+                padding: 0.875rem;
+            }
+        }
+
+        /* Mobile Phones - Small */
+        @media (max-width: 375px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-image-wrapper {
+                max-width: 220px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .timeline-content {
+                font-size: 0.9rem;
+            }
+
+            .timeline-description li {
+                font-size: 0.85rem;
+            }
+
+            .project-description {
+                font-size: 0.9rem;
+            }
+
+            .tech-tag {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+
+        /* Extra Small Mobile Phones */
+        @media (max-width: 320px) {
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-text .tagline {
+                font-size: 0.9rem;
+            }
+
+            .hero-image-wrapper {
+                max-width: 200px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .about-image-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+
+            .skill-tag {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .project-link {
+                font-size: 0.85rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Landscape Mode Adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 2rem;
+            }
+
+            .hero-content {
+                gap: 2rem;
+            }
+
+            .hero-image-wrapper {
+                max-width: 200px;
+            }
+
+            nav {
+                padding: 0.5rem 0;
+            }
+        }
+
+        /* High Resolution Mobile Displays */
+        @media (-webkit-min-device-pixel-ratio: 2) and (max-width: 768px),
+               (min-resolution: 192dpi) and (max-width: 768px) {
+            /* Ensure text remains crisp on retina displays */
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        /* iPad Pro and Large Tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-content {
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .awards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Fix for About Image */
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(99, 102, 241, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">James Kulu</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#youtube">YouTube</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm James Kulu</h1>
+                <p class="subtitle">Senior Python Engineer</p>
+                <p class="tagline">Building scalable solutions with Python, cloud technologies, and AI</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class='bx bx-envelope'></i>
+                        Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class='bx bx-briefcase'></i>
+                        View Projects
+                    </a>
                 </div>
             </div>
-        </footer>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-bg"></div>
+                    <img src="assets/img/james2.png" alt="James Kulu">
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Passionate about creating innovative solutions</p>
+        <div class="about-content">
+            <div class="about-image">
+                <div class="about-image-wrapper">
+                    <img src="assets/img/james2.png" alt="James Kulu">
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Software Engineer & AI Enthusiast</h3>
+                <p>
+                    An ambitious software engineer with excellent work ethics, time management, and creativity. 
+                    Currently working as a Senior Python Engineer at Hybrid News Limited, I specialize in building 
+                    scalable RESTful APIs, microservices, and cloud-native applications.
+                </p>
+                <p>
+                    With expertise in Python frameworks like Django, Flask, and FastAPI, combined with cloud platforms 
+                    like AWS and Azure, I deliver high-performance solutions. My recent work includes developing AI-powered 
+                    applications using RAG and Agentic AI technologies.
+                </p>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- SMTP EMAIL -->
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">My professional journey</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">December 2024 - Present</div>
+                    <div class="timeline-title">Senior Python Engineer</div>
+                    <div class="timeline-company">Hybrid News Limited | Bristol, UK</div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Engineered scalable RESTful APIs and microservices using Django and Flask</li>
+                            <li>Managed deployment on AWS with integrated CI/CD pipelines</li>
+                            <li>Contributed to InternalHub suite including HESA data integration and SI Ad Launcher</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">March 2023 - December 2024</div>
+                    <div class="timeline-title">Software Engineer</div>
+                    <div class="timeline-company">Outcode Software LLC | Utah, USA</div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Developed scalable RESTful APIs using Python Django framework</li>
+                            <li>Deployed cloud applications on AWS and Azure with CI/CD pipelines</li>
+                            <li>Worked on StackUp, Hello Sugar, and EventFlo platforms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">April 2021 - January 2023</div>
+                    <div class="timeline-title">Junior Python Engineer</div>
+                    <div class="timeline-company">InfoDevelopers Pvt. Ltd. | Lalitpur</div>
+                    <div class="timeline-description">
+                        <ul>
+                            <li>Developed loan management application for Agricultural Bank Ltd</li>
+                            <li>Built E-Commerce platform for auto parts</li>
+                            <li>Conducted knowledge sharing sessions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <p class="section-subtitle">Academic foundation and achievements</p>
+        <div class="education-container">
+            <div class="education-item">
+                <div class="education-icon">
+                    <i class='bx bxs-graduation'></i>
+                </div>
+                <div class="education-content">
+                    <div class="education-header">
+                        <div>
+                            <h3>Bachelor of Science (Hons) in Computing</h3>
+                            <p class="education-institution">Softwarica College, Kathmandu</p>
+                            <p class="education-affiliation">Affiliated to Coventry University, UK</p>
+                        </div>
+                        <span class="education-date">2018 - 2022</span>
+                    </div>
+                    <div class="education-details">
+                        <div class="education-achievement">
+                            <i class='bx bx-trophy'></i>
+                            <span>First Class Honors Degree</span>
+                        </div>
+                        <div class="thesis-info">
+                            <h4>Thesis Project:</h4>
+                            <p>"Application of appropriate image processing algorithms to design and develop a home security system"</p>
+                        </div>
+                        <div class="coursework">
+                            <h4>Key Coursework:</h4>
+                            <div class="course-tags">
+                                <span class="course-tag">Web API Development</span>
+                                <span class="course-tag">Algorithms & Data Structures</span>
+                                <span class="course-tag">Artificial Intelligence</span>
+                                <span class="course-tag">Designing for Usability</span>
+                                <span class="course-tag">Agile Development</span>
+                                <span class="course-tag">Android App Development</span>
+                                <span class="course-tag">IoT & Pervasive Computing</span>
+                                <span class="course-tag">Data & Information Retrieval</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-icon">
+                    <i class='bx bxs-school'></i>
+                </div>
+                <div class="education-content">
+                    <div class="education-header">
+                        <div>
+                            <h3>High School - Physical Science</h3>
+                            <p class="education-institution">Little Angels' College, Lalitpur</p>
+                        </div>
+                        <span class="education-date">2016 - 2018</span>
+                    </div>
+                    <div class="education-details">
+                        <div class="coursework">
+                            <h4>Core Subjects:</h4>
+                            <div class="course-tags">
+                                <span class="course-tag">Physics</span>
+                                <span class="course-tag">Chemistry</span>
+                                <span class="course-tag">Mathematics</span>
+                                <span class="course-tag">Computer Science</span>
+                                <span class="course-tag">English</span>
+                                <span class="course-tag">Nepali</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certifications-section">
+                <h3 class="certifications-title">Professional Certifications</h3>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class='bx bx-brain'></i>
+                        </div>
+                        <div class="cert-content">
+                            <h4>Artificial Intelligence Analyst</h4>
+                            <p>Mastery Award 2019</p>
+                        </div>
+                    </div>
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class='bx bx-user-check'></i>
+                        </div>
+                        <div class="cert-content">
+                            <h4>Digital Skills: User Experience</h4>
+                            <p>Professional Certificate</p>
+                        </div>
+                    </div>
+                    <div class="certification-card">
+                        <div class="cert-icon">
+                            <i class='bx bxl-django'></i>
+                        </div>
+                        <div class="cert-content">
+                            <h4>Advanced Web Development with Django</h4>
+                            <p>Specialized Training</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">Technologies I work with</p>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class='bx bxl-python'></i>Python</span>
+                    <span class="skill-tag"><i class='bx bxl-javascript'></i>JavaScript</span>
+                    <span class="skill-tag"><i class='bx bxl-java'></i>Java</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class='bx bxl-django'></i>Django</span>
+                    <span class="skill-tag"><i class='bx bxl-flask'></i>Flask</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag"><i class='bx bxl-react'></i>React</span>
+                    <span class="skill-tag"><i class='bx bxl-nodejs'></i>Express.js</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag"><i class='bx bxl-postgresql'></i>PostgreSQL</span>
+                    <span class="skill-tag"><i class='bx bxl-mongodb'></i>MongoDB</span>
+                    <span class="skill-tag">Redis</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Cloud & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class='bx bxl-aws'></i>AWS</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag"><i class='bx bxl-docker'></i>Docker</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Nginx</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>AI & ML</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">GenAI</span>
+                    <span class="skill-tag">RAG</span>
+                    <span class="skill-tag">Agentic AI</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Others</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class='bx bxl-git'></i>Git</span>
+                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Unit Testing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">Recent work and personal projects</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="assets/img/hellosugar.png" alt="Hello Sugar" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Hello Sugar</h3>
+                    <p class="project-description">
+                        Spa and beauty service booking platform supporting 100+ locations across USA. 
+                        Integrated with Boulevard API for seamless booking management.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class='bx bx-link-external'></i>Live Demo
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class='bx bxl-github'></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/stackup.png" alt="StackUp Skills" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">StackUp Skills</h3>
+                    <p class="project-description">
+                        Sports event management platform for organizing events, assessing athletes' skills, 
+                        and performance-based ranking system.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class='bx bx-link-external'></i>Live Demo
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class='bx bxl-github'></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/bookland.jpg" alt="Bookland" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Bookland E-Commerce</h3>
+                    <p class="project-description">
+                        Full-featured e-commerce platform for books with payment integration, 
+                        user authentication, and admin dashboard.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://bookland-ecommerce.herokuapp.com/" class="project-link">
+                            <i class='bx bx-link-external'></i>Live Demo
+                        </a>
+                        <a href="https://github.com/jameskulu/bookland-ecommerce-django" class="project-link">
+                            <i class='bx bxl-github'></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/vintage.jpg" alt="Vintage Wardrobe" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Vintage Wardrobe</h3>
+                    <p class="project-description">
+                        Clothes rental platform allowing users to rent clothes from other users 
+                        with date-based availability system.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://vintagewardrobe.herokuapp.com/" class="project-link">
+                            <i class='bx bx-link-external'></i>Live Demo
+                        </a>
+                        <a href="https://github.com/jameskulu/vintage-wardrobe-system-be" class="project-link">
+                            <i class='bx bxl-github'></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/security.jpg" alt="Smart Security System" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Smart Security System</h3>
+                    <p class="project-description">
+                        AI-powered home security system using Raspberry Pi 4 with facial recognition 
+                        and email notifications for unknown faces.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Raspberry Pi</span>
+                        <span class="tech-tag">IoT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class='bx bxl-github'></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="assets/img/jistagram.jpg" alt="Jistagram" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Instagram Clone</h3>
+                    <p class="project-description">
+                        Social media platform clone with features like posting, commenting, 
+                        following, and real-time notifications.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/jameskulu/instagram-clone-django" class="project-link">
+                            <i class='bx bxl-github'></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://github.com/jameskulu?tab=repositories" class="btn btn-primary">
+                <i class='bx bxl-github'></i>
+                View More Projects
+            </a>
+        </div>
+    </section>
+
+    <!-- YouTube Channel Section -->
+    <section id="youtube">
+        <h2 class="section-title">My Creative Side</h2>
+        <p class="section-subtitle">Nepali Cover Songs & Musical Journey</p>
+        <div class="youtube-container">
+            <div class="youtube-content">
+                <div class="youtube-info">
+                    <div class="channel-header">
+                        <div class="channel-avatar">
+                            <img src="assets/img/james2.png" alt="James Kulu">
+                        </div>
+                        <div class="channel-details">
+                            <h3>James Kulu</h3>
+                            <p class="channel-handle">@jameskulu</p>
+                            <div class="channel-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">15+</span>
+                                    <span class="stat-label">Videos</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">1.2K+</span>
+                                    <span class="stat-label">Subscribers</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">50K+</span>
+                                    <span class="stat-label">Total Views</span>
+                                </div>
+                            </div>
+                            <a href="https://www.youtube.com/@jameskulu" target="_blank" class="subscribe-btn">
+                                <i class='bx bxl-youtube'></i>
+                                Subscribe on YouTube
+                            </a>
+                        </div>
+                    </div>
+                    <div class="channel-description">
+                        <p>
+                            Beyond coding, I'm passionate about music! I create soulful Nepali cover songs, 
+                            bringing my own style to beloved classics and contemporary hits. Music has always 
+                            been my creative outlet, and I love sharing this journey with my audience.
+                        </p>
+                        <p>
+                            From winning the Softwarica Talent Hunt to performing covers that resonate with 
+                            thousands, my YouTube channel is where technology meets artistry.
+                        </p>
+                    </div>
+                </div>
+                <div class="youtube-showcase">
+                   
+                    <div class="youtube-cta">
+                        <p>🎵 New covers every month! Join me on this musical journey.</p>
+                        <div class="youtube-links">
+                            <a href="https://www.youtube.com/@jameskulu" target="_blank" class="btn-youtube">
+                                <i class='bx bxl-youtube'></i>
+                                Visit Channel
+                            </a>
+                            <a href="https://www.instagram.com/james_kulu" target="_blank" class="btn-instagram">
+                                <i class='bx bxl-instagram'></i>
+                                Follow Updates
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Achievements Section -->
+    <section id="awards">
+        <h2 class="section-title">Awards & Achievements</h2>
+        <p class="section-subtitle">Recognition for excellence</p>
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-icon">🏆</div>
+                <h3 class="award-title">Q4 MVP 2023</h3>
+                <p class="award-description">
+                    Awarded for outstanding contributions and excellence in project delivery and team collaboration at Outcode Software LLC.
+                </p>
+                <p class="award-date">January 2024</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🎓</div>
+                <h3 class="award-title">First Class Honors Degree</h3>
+                <p class="award-description">
+                    Graduated with First Class Honors in BSc Computing from Coventry University, UK.
+                </p>
+                <p class="award-date">2022</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🤖</div>
+                <h3 class="award-title">AI Analyst Mastery Award</h3>
+                <p class="award-description">
+                    Certified as Artificial Intelligence Analyst with Mastery Award for exceptional performance.
+                </p>
+                <p class="award-date">2019</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🎤</div>
+                <h3 class="award-title">Softwarica Talent Hunt Winner</h3>
+                <p class="award-description">
+                    Won 1st prize in talent hunt competition for singing organized by Softwarica College.
+                </p>
+                <p class="award-date">September 2018</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's discuss your next project</p>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <a href="mailto:jameskulu55@gmail.com">jameskulu55@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class='bx bx-phone'></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <a href="tel:+9779860305013">+977 9860305013</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class='bx bx-map'></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Location</h4>
+                        <span>Lalitpur, Nepal</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/jameskulu/" class="social-link">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                    <a href="https://github.com/jameskulu/" class="social-link">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                    <a href="https://www.facebook.com/james.kulu.33/" class="social-link">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="https://www.instagram.com/james_kulu" class="social-link">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <input type="text" class="form-control" placeholder="Subject" required>
+                <textarea class="form-control" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">
+                    <i class='bx bx-send'></i>
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>James Kulu</h3>
+                <p>Senior Python Engineer passionate about building scalable solutions and innovative applications using cutting-edge technologies.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/jameskulu/" class="social-link">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                    <a href="https://github.com/jameskulu/" class="social-link">
+                        <i class='bx bxl-github'></i>
+                    </a>
+                    <a href="https://www.facebook.com/james.kulu.33/" class="social-link">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="https://www.instagram.com/james_kulu" class="social-link">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">API Development</a></li>
+                    <li><a href="#">Cloud Solutions</a></li>
+                    <li><a href="#">AI Integration</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 James Kulu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('bx-menu');
+            icon.classList.toggle('bx-x');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.add('bx-menu');
+                    icon.classList.remove('bx-x');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
 </html>
