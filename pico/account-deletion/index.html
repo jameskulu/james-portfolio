@@ -1,134 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pico Money — Account Deletion</title>
-<meta name="description" content="Request deletion of your Pico Money account and associated data." />
-<style>
-  :root {
-    --bg: #f8f7fc;
-    --card: #ffffff;
-    --text: #1f2333;
-    --muted: #5b5f72;
-    --accent: #774EF6;
-    --accent-soft: #efeaff;
-    --border: #e5e2f0;
-    --danger: #e11d48;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  header.hero {
-    background: linear-gradient(135deg, #3B0F80 0%, #774EF6 100%);
-    color: #ffffff;
-    padding: 56px 24px 48px;
-    text-align: center;
-  }
-  header.hero h1 { margin: 0 0 8px; font-size: 32px; letter-spacing: -0.5px; }
-  header.hero p { margin: 0; opacity: 0.85; font-size: 16px; }
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 32px 24px 64px;
-  }
-  section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px 28px;
-    margin-bottom: 20px;
-  }
-  h2 { font-size: 20px; margin: 0 0 12px; color: var(--accent); }
-  h3 { font-size: 16px; margin: 18px 0 6px; }
-  p { margin: 8px 0; }
-  ul { margin: 8px 0; padding-left: 22px; }
-  li { margin: 5px 0; }
-  .muted { color: var(--muted); font-size: 14px; }
-  .highlight {
-    background: var(--accent-soft);
-    border-left: 4px solid var(--accent);
-    border-radius: 0 10px 10px 0;
-    padding: 14px 16px;
-    margin: 16px 0;
-  }
-  .btn {
-    display: inline-block;
-    background: var(--accent);
-    color: #ffffff;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 12px 22px;
-    border-radius: 10px;
-    margin-top: 8px;
-  }
-  .btn:hover { background: #5f3bd6; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  @media (max-width: 560px) {
-    header.hero h1 { font-size: 26px; }
-    section { padding: 20px; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pico Money — Account Deletion</title>
+  <meta name="description" content="Request deletion of your Pico Money account and associated data." />
+  <style>
+    :root {
+      --bg: #f8f7fc;
+      --card: #ffffff;
+      --text: #1f2333;
+      --muted: #5b5f72;
+      --accent: #774EF6;
+      --accent-soft: #efeaff;
+      --border: #e5e2f0;
+      --danger: #e11d48;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header.hero {
+      background: linear-gradient(135deg, #3B0F80 0%, #774EF6 100%);
+      color: #ffffff;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+
+    header.hero h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      letter-spacing: -0.5px;
+    }
+
+    header.hero p {
+      margin: 0;
+      opacity: 0.85;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 0 0 12px;
+      color: var(--accent);
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 18px 0 6px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul {
+      margin: 8px 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      background: #5f3bd6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 560px) {
+      header.hero h1 {
+        font-size: 26px;
+      }
+
+      section {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="hero">
-  <h1>Account Deletion</h1>
-  <p>Pico Money — delete your account and associated data</p>
-</header>
+  <header class="hero">
+    <h1>Account Deletion</h1>
+    <p>Pico Money — delete your account and associated data</p>
+  </header>
 
-<main>
+  <main>
 
-  <section>
-    <h2>How to delete your account</h2>
-    <p>
-      You can delete your Pico Money account and all associated data in two ways:
-    </p>
+    <section>
+      <h2>Delete some of your data (without deleting your account)</h2>
+      <p>
+        You can remove individual items from your budget without deleting your account:
+      </p>
+      <ul>
+        <li>Go to the <strong>Home</strong> or <strong>History</strong> tab.</li>
+        <li>Swipe or tap a transaction and choose <strong>Delete</strong>.</li>
+        <li>Recurring bills and income items can be removed from the plan section.</li>
+      </ul>
+      <p>
+        These deletions are applied to your account and synced data. If you need help
+        removing specific data, email us at
+        <a
+          href="mailto:jameskulu55@gmail.com?subject=Data%20Deletion%20Request%20-%20Pico%20Money">jameskulu55@gmail.com</a>.
+      </p>
+    </section>
 
-    <h3>Option 1 — In the app (fastest)</h3>
-    <ul>
-      <li>Open Pico Money on your device.</li>
-      <li>Go to the <strong>Profile</strong> tab.</li>
-      <li>Tap <strong>Delete account</strong> at the bottom of the settings list.</li>
-      <li>Confirm the deletion. Your account and synced data are removed immediately.</li>
-    </ul>
+    <section>
+      <h2>How to delete your account</h2>
+      <p>
+        You can delete your Pico Money account and all associated data in two ways:
+      </p>
 
-    <h3>Option 2 — Request by email</h3>
-    <p>If you cannot access the app, send a deletion request to us at:</p>
-    <p><a class="btn" href="mailto:jameskulu55@gmail.com?subject=Account%20Deletion%20Request%20-%20Pico%20Money&body=Please%20delete%20my%20Pico%20Money%20account%20and%20all%20associated%20data.%20My%20account%20email%20is%3A%20%5Byour%20account%20email%5D">Request account deletion by email</a></p>
-    <p>Include the email address you used to sign in so we can verify the request. We will process it within 30 days and confirm once it's done.</p>
-  </section>
+      <h3>Option 1 — In the app (fastest)</h3>
+      <ul>
+        <li>Open Pico Money on your device.</li>
+        <li>Go to the <strong>Profile</strong> tab.</li>
+        <li>Tap <strong>Delete account</strong> at the bottom of the settings list.</li>
+        <li>Confirm the deletion. Your account and synced data are removed immediately.</li>
+      </ul>
 
-  <section>
-    <h2>What gets deleted</h2>
-    <ul>
-      <li>Your account profile (name, email).</li>
-      <li>All synced budget data: transactions, income, recurring bills, savings goals, and preferences.</li>
-    </ul>
-    <div class="highlight">
-      <strong>Note about subscriptions:</strong> deleting your Pico Money account does not cancel a
-      paid subscription through the Google Play Store or Apple App Store. To stop future charges,
-      cancel the subscription from your device settings (Play Store / App Store → Subscriptions).
-    </div>
-  </section>
+      <h3>Option 2 — Request by email</h3>
+      <p>If you cannot access the app, send a deletion request to us at:</p>
+      <p><a class="btn"
+          href="mailto:jameskulu55@gmail.com?subject=Account%20Deletion%20Request%20-%20Pico%20Money&body=Please%20delete%20my%20Pico%20Money%20account%20and%20all%20associated%20data.%20My%20account%20email%20is%3A%20%5Byour%20account%20email%5D">Request
+          account deletion by email</a></p>
+      <p>Include the email address you used to sign in so we can verify the request. We will process it within 30 days
+        and confirm once it's done.</p>
+    </section>
 
-  <section>
-    <h2>Data retention</h2>
-    <p>
-      Once your deletion request is processed, your personal and financial data is removed from our
-      servers. Aggregated, anonymized analytics may be retained for reporting and service improvement,
-      as described in our <a href="/privacy-policy.html">Privacy Policy</a>.
-    </p>
-  </section>
+    <section>
+      <h2>What gets deleted</h2>
+      <ul>
+        <li>Your account profile (name, email).</li>
+        <li>All synced budget data: transactions, income, recurring bills, savings goals, and preferences.</li>
+      </ul>
+      <div class="highlight">
+        <strong>Note about subscriptions:</strong> deleting your Pico Money account does not cancel a
+        paid subscription through the Google Play Store or Apple App Store. To stop future charges,
+        cancel the subscription from your device settings (Play Store / App Store → Subscriptions).
+      </div>
+    </section>
 
-</main>
+    <section>
+      <h2>Data retention</h2>
+      <p>
+        Once your deletion request is processed, your personal and financial data is removed from our
+        servers. Aggregated, anonymized analytics may be retained for reporting and service improvement,
+        as described in our <a href="/privacy-policy.html">Privacy Policy</a>.
+      </p>
+    </section>
+
+  </main>
 
 </body>
+
 </html>
